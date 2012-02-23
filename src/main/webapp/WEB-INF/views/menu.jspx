@@ -5,7 +5,7 @@
     <c:if test="${pageContext['request'].userPrincipal != null}">
         <menu:menu id="_menu">
             <menu:category id="c_mtuser" label="Menu">
-                <menu:item id="i_mtuser_tweet" label="Tweet" url="/"/>
+                <menu:item id="i_mtuser_tweet" label="Tweets" url="/"/>
                 <menu:item id="i_mtuser_following" label="Following" url="/mtusers?find=Following"/>
                 <menu:item id="i_mtuser_follower" label="Followers" url="/mtusers?find=Followers"/>
                 <menu:item id="fi_mtuser_usernamelikeornamelikeorlastnamelike" label="Find Users" url="/mtusers?find=ByUsernameLikeOrNameLikeOrLastNameLike&amp;form"/>
