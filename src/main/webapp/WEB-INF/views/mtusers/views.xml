@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="minitwitter" name="mtusers/home">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/home.jspx"/>
+    </definition>
+    <definition extends="minitwitter" name="mtusers/list">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/list.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/show">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/show.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/create">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/create.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/update">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/update.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/findMTUsersByNameLikeOrLastNameLike">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/findMTUsersByNameLikeOrLastNameLike.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/findMTUsersByUsernameEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mtusers/findMTUsersByUsernameEquals.jspx"/>
+    </definition>
+    <definition extends="default" name="mtusers/findMTUsersByUsernameLikeOrNameLikeOrLastNameLike">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/mtusers/findMTUsersByUsernameLikeOrNameLikeOrLastNameLike.jspx"/>
+    </definition>
+</tiles-definitions>

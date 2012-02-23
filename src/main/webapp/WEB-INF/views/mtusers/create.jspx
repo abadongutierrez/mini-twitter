@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_jabaddon_minitwitter_domain_MTUser" modelAttribute="MTUser_" path="/mtusers" render="${empty dependencies}" z="user-managed">
+        <field:textarea field="username" id="c_com_jabaddon_minitwitter_domain_MTUser_username" required="true" z="fbVXrsvKDrYvO8LtpOuEu4fBncI="/>
+        <field:textarea field="name" id="c_com_jabaddon_minitwitter_domain_MTUser_name" required="true" z="gXfQmt9wLCB+pBM+YyRyUtdSPhY="/>
+        <field:textarea field="lastName" id="c_com_jabaddon_minitwitter_domain_MTUser_lastName" required="true" z="RYbf42npFGANL+PuUBEy4fUL4Lw="/>
+        <field:input field="tweets" id="c_com_jabaddon_minitwitter_domain_MTUser_tweets" z="jijFBt0L1qb/UZlNOsau4MkJwJs="/>
+        <field:input field="following" id="c_com_jabaddon_minitwitter_domain_MTUser_following" z="V0N3RkF1hyZ3LE7sIcSs7mGX1Fs="/>
+        <field:input field="followers" id="c_com_jabaddon_minitwitter_domain_MTUser_followers" z="1u/aBd3I6idRwZWgN9NmR3/wU6M="/>
+        <field:input field="password" id="c_com_jabaddon_minitwitter_domain_MTUser_password" max="10" required="true" z="xFjLYv92vRIo0+AMWyp9bTC0D0Y="/>
+        <field:checkbox field="enabled" id="c_com_jabaddon_minitwitter_domain_MTUser_enabled" z="KEtyAaoD+pBeAmI708GRO+DZZzs="/>
+        <field:input field="passwordConfirmation" id="c_com_jabaddon_minitwitter_domain_MTUser_passwordConfirmation" z="VCuNUg2KoS/gDfsr+ENOIWh3Kz8="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_jabaddon_minitwitter_domain_MTUser" render="${not empty dependencies}" z="qbwiL6zStXmIvjSN+jA1+UgIMt4="/>
+</div>

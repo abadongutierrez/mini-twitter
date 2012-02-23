@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_jabaddon_minitwitter_domain_MTUser" object="${mtuser}" path="/mtusers" z="iYPcMiOt/JdSof3Vlb9B1P69OCc=">
+        <field:display field="username" id="s_com_jabaddon_minitwitter_domain_MTUser_username" object="${mtuser}" z="r5MeDJz3A4Io71CxAwsUepsNpng="/>
+        <field:display field="name" id="s_com_jabaddon_minitwitter_domain_MTUser_name" object="${mtuser}" z="rUk1H7458qDFIbrbg5KZMKTzDes="/>
+        <field:display field="lastName" id="s_com_jabaddon_minitwitter_domain_MTUser_lastName" object="${mtuser}" z="93x22GPmhCZo9400wAXrZMyZzyU="/>
+        <field:display field="tweets" id="s_com_jabaddon_minitwitter_domain_MTUser_tweets" object="${mtuser}" z="rBpxEz7CGrktK+dvkiwjfP4crdM="/>
+        <field:display field="following" id="s_com_jabaddon_minitwitter_domain_MTUser_following" object="${mtuser}" z="SWEPH7iBTEtYlFRvGnHKKflE8A0="/>
+        <field:display field="followers" id="s_com_jabaddon_minitwitter_domain_MTUser_followers" object="${mtuser}" z="r+C4DA9qQenzH/k6BWsMxEhZT7c="/>
+        <field:display field="password" id="s_com_jabaddon_minitwitter_domain_MTUser_password" object="${mtuser}" z="VWXGeGKAiZ1bdnqBJBVUqSRfCRQ="/>
+        <field:display field="enabled" id="s_com_jabaddon_minitwitter_domain_MTUser_enabled" object="${mtuser}" z="GfNDHDKa/A05vMG0QW+o5RZnZiA="/>
+        <field:display field="passwordConfirmation" id="s_com_jabaddon_minitwitter_domain_MTUser_passwordConfirmation" object="${mtuser}" z="xW36+LfMu5lPdj13bTLpcXjkzHw="/>
+    </page:show>
+</div>
