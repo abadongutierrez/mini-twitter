@@ -3,6 +3,7 @@ package com.jabaddon.minitwitter.domain;
 import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,14 +19,16 @@ import static org.junit.Assert.*;
 public class MTUserIntegrationTest {
 
     @Test
+    @Transactional
     public void testCountUsers() {
-        createNPersistDefaultUser();
+        createNPersistDefaultUser("xxx_890");
         assertTrue(MTUser.countMTUsers() > 0);
     }
 
     @Test
+    @Transactional
     public void testPersistUser() {
-        MTUser newUser = createNPersistDefaultUser();
+        MTUser newUser = createNPersistDefaultUser("ado_456");
         MTUser dbUser = MTUser.findMTUser(newUser.getId());
         assertThat(newUser.getUsername(), is(dbUser.getUsername()));
     }
@@ -33,7 +36,7 @@ public class MTUserIntegrationTest {
     @Test
     @Transactional
     public void testTweet() {
-        MTUser user = createNPersistDefaultUser();
+        MTUser user = createNPersistDefaultUser("hola666");
         String msg = "Hola Mundo!";
         user.tweet(msg);
         user.merge();
@@ -146,8 +149,8 @@ public class MTUserIntegrationTest {
         assertThat(timeline.get(5).getText(), is("My very first tweet!"));
     }
 
-    private MTUser createNPersistDefaultUser() {
-        MTUser newUser = new MTUserBuilder().build();
+    private MTUser createNPersistDefaultUser(String username) {
+        MTUser newUser = new MTUserBuilder().withUsername(username).build();
         newUser.persist();
         newUser.flush();
         return newUser;

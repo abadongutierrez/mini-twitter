@@ -13,6 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -23,13 +25,18 @@ public class TweetControllerIntegrationTest {
     @Test
     @Transactional
     public void testTweet() {
-        MTUser user = new MTUserBuilder().buildNPersist();
+        final MTUser user = new MTUserBuilder().withUsername("mta_123").buildNPersist();
         
         TweetController controller = new TweetController();
         MockHttpSession session = new MockHttpSession();
         session.setAttribute("userId", user.getId());
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setSession(session);
+        request.setUserPrincipal(new Principal() {
+            public String getName() {
+                return user.getUsername();
+            }
+        });
         ResponseEntity<String> re = controller.tweet(request, "{text: 'Hey!'}");
         assertThat(re.getStatusCode(), is(HttpStatus.CREATED));
         user.flush();

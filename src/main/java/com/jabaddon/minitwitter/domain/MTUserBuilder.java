@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MTUserBuilder {
+    private String password = "1234567890";
     private String username = "default";
     private String name = "Rafael";
     private String lastName = "Gutierrez";
@@ -20,6 +21,7 @@ public class MTUserBuilder {
         user.setName(this.name);
         user.setLastName(this.lastName);
         user.setTweets(this.tweets);
+        user.setPassword(this.password);
         return user;
     }
     

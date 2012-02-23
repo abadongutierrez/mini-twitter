@@ -18,7 +18,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(table = "mt_t_user", finders = {"findMTUsersByUsernameEquals", "findMTUsersByUsernameLikeOrNameLikeOrLastNameLike"})
+@RooJpaActiveRecord(table = "mt_t_user",
+        finders = {"findMTUsersByUsernameEquals", "findMTUsersByUsernameLikeOrNameLikeOrLastNameLike"})
 @RooJson
 public class MTUser {
     
@@ -26,6 +27,7 @@ public class MTUser {
 
     @NotNull
     @Size(max = 50)
+    @Column(unique = true)
     private String username;
 
     @NotNull

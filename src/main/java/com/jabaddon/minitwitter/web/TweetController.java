@@ -33,7 +33,7 @@ public class TweetController {
         Map map = (Map) new JSONDeserializer().use("text", String.class).deserialize(tweetText);
         LOGGER.debug("Creating a new tweet [{}]", map.get("text"));
         user.tweet((String) map.get("text"));
-        user.persist();
+        user.merge();
         LOGGER.debug("New tweet created");
         return new ResponseEntity<String>(HttpStatus.CREATED);
     }
