@@ -1,0 +1,132 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" import="com.jabaddon.minitwitter.domain.MTUser"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <c:set value="${pageContext['request'].userPrincipal.name}" var="username" />
+
+    <style type="text/css">
+        .inactive {
+            color: #d9d6d6;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">
+        var since = null;
+        function timelineRowBuilder(data) {
+                return '<tr>'
+                        + '<td>'
+                        + data.authorUsername
+                        + '</td>'
+                        + '<td>'
+                        + data.text
+                        + '</td>'
+                        + '<td>'
+                        + jQuery.format.date(new Date(data.timestamp), 'yyyy-MM-dd@HH:mm:ss')
+                        + '</td>'
+                        + '</tr>';
+        }
+
+        function queryTimeline() {
+            $.ajax({
+                type: "get",
+                url: "${pageContext.servletContext.contextPath}/mtusers/${username}/timeline",
+                data: {since: since},
+                contentType: "application/json",
+                dataType: "json",
+                error: function() {
+                    alert("An error occurred!");
+                },
+                success: function(data) {
+                    if (data.length > 0) {
+                        since = data[data.length - 1].timestamp;
+                        console.log("Since = " + since);
+                    }
+                    $.each(data, function() {
+                        if ($("#timeline table > tbody > tr").length > 0) {
+                            $("#timeline table > tbody > tr:first").before(timelineRowBuilder(this));
+                        }
+                        else {
+                            $("#timeline table > tbody").append(timelineRowBuilder(this));
+                        }
+                    });
+                }
+            });
+        }
+
+        function clearTableNQueryTimeline() {
+            if (since != null) {
+                queryTimeline();
+            }
+            else {
+                $("#timeline table tbody tr").remove();
+                queryTimeline();
+            }
+        }
+
+        $(function() {
+            $("#tweetForm").submit(function() {
+                $.ajax({
+                    type: "post",
+                    url: "${pageContext.servletContext.contextPath}/tweets",
+                    data: JSON.stringify({text: $("#tweetForm #tweetText").val()}),
+                    contentType: "application/json",
+                    dataType: "json",
+                    error: function() {
+                        alert("An error occurred!")
+                    },
+                    success: function() {
+                        $('textarea').each(function() {
+                            $(this).addClass('inactive')
+                                .val($(this).data('default'))
+                        });
+                        clearTableNQueryTimeline();
+                    }
+                });
+                return false;
+            });
+
+            queryTimeline();
+
+            setInterval("clearTableNQueryTimeline()", 10000);
+
+            $('textarea').each(function() {
+                $(this)
+                        .data('default', $(this).val())
+                        .addClass('inactive')
+                        .focus(function() {
+                            $(this).removeClass('inactive');
+                            if ($(this).val() == $(this).data('default') || '') {
+                                $(this).val('');
+                            }
+                        })
+                        .blur(function() {
+                            var default_val = $(this).data('default');
+                            if ($(this).val() == '') {
+                                $(this).addClass('inactive');
+                                $(this).val($(this).data('default'));
+                            }
+                        });
+            });
+        });
+    </script>
+    <form id="tweetForm" method="post">
+        <textarea id="tweetText" rows="2" cols="20" style="width: 500px;">Compose your tweet...</textarea>
+        <br/>
+        <input id="proceed" type="submit" value="Tweet!" />
+    </form>
+
+    <div id="timeline">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Author</td>
+                    <td>Tweet</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

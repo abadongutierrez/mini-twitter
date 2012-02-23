@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+     xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <style type="text/css">
+        label.error {
+            float: none;
+            color: red;
+            padding-left: .5em;
+            vertical-align: top;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#formDiv form").validate({
+                rules:{
+                    username:{
+                        required:true
+                    },
+                    name:{
+                        required:true
+                    },
+                    lastName:{
+                        required:true
+                    },
+                    password:{
+                        minlength:10,
+                        required:true
+                    },
+                    passwordConfirmation:{
+                        equalTo:"#password"
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div id="formDiv">
+        <form id="mtuser" action="${pageContext.servletContext.contextPath}/register" method="POST">
+            <div id="usernameDiv">
+                <label for="_username_id">Username:</label>
+                <input id="username" name="username" type="text" value=""/>
+                <br/>
+            </div>
+            <br/>
+            <div id="nameDiv">
+                <label for="name">Name:</label>
+                <input id="name" name="name" type="text" value=""/>
+                <br/>
+            </div>
+            <br/>
+            <div id="lastNameDiv">
+                <label for="lastName">Last Name:</label>
+                <input id="lastName" name="lastName" type="text" value=""/>
+                <br/>
+            </div>
+            <br/>
+            <div id="passwordDiv">
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password" value=""/>
+                <br/>
+            </div>
+            <br/>
+            <div id="passwordConfirmationDiv">
+                <label for="passwordConfirmation">Repeat Password:</label>
+                <input id="passwordConfirmation" name="passwordConfirmation" type="password" value=""/>
+                <br/>
+            </div>
+            <br/>
+            <div id="submitDiv" class="submit">
+                <input value="Save" type="submit" id="proceed"/>
+            </div>
+        </form>
+    </div>
+    <!--
+    <form:create id="fc_com_jabaddon_minitwitter_domain_MTUser" modelAttribute="mtuser" path="/register">
+        <field:input field="username" id="c_com_jabaddon_minitwitter_domain_MTUser_username" required="true" z="fbVXrsvKDrYvO8LtpOuEu4fBncI="/>
+        <field:input field="name" id="c_com_jabaddon_minitwitter_domain_MTUser_name" required="true" z="gXfQmt9wLCB+pBM+YyRyUtdSPhY="/>
+        <field:input field="lastName" id="c_com_jabaddon_minitwitter_domain_MTUser_lastName" required="true" z="RYbf42npFGANL+PuUBEy4fUL4Lw="/>
+        <field:input field="password" id="c_com_jabaddon_minitwitter_domain_MTUser_password" required="true" type="password" z="0Oroa58s0maWEvytlC0sUp1RoVk="/>
+        <field:input field="passwordConfirmation" id="c_com_jabaddon_minitwitter_domain_MTUser_passwordConfirmation" label="Repeat Password" required="true" type="password" z="0Oroa58s0maWEvytlC0sUp1RoVk="/>
+    </form:create>
+    -->
+</div>

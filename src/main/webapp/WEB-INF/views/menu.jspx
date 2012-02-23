@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <c:if test="${pageContext['request'].userPrincipal != null}">
+        <menu:menu id="_menu">
+            <menu:category id="c_mtuser" label="Menu">
+                <menu:item id="i_mtuser_tweet" label="Tweet" url="/"/>
+                <menu:item id="i_mtuser_following" label="Following" url="/mtusers?find=Following"/>
+                <menu:item id="i_mtuser_follower" label="Followers" url="/mtusers?find=Followers"/>
+                <menu:item id="fi_mtuser_usernamelikeornamelikeorlastnamelike" label="Find Users" url="/mtusers?find=ByUsernameLikeOrNameLikeOrLastNameLike&amp;form"/>
+                <menu:item id="i_mtuser_logout" label="Logout" url="/resources/j_spring_security_logout"/>
+            </menu:category>
+        </menu:menu>
+    </c:if>
+    <c:if test="${pageContext['request'].userPrincipal == null}">
+        <menu:menu id="_menu">
+            <menu:category id="c_mtuser" label="Menu">
+                <menu:item id="i_mtuser_create" label="Register" url="/register?form"/>
+                <menu:item id="i_mtuser_login" label="Login" url="/login"/>
+            </menu:category>
+        </menu:menu>
+    </c:if>
+</div>

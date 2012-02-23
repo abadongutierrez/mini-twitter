@@ -1,0 +1,24 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes" />
+    <!--spring:theme code="styleSheet" var="roo_css" /-->
+    <!--spring:url value="/${roo_css}" var="roo_css_url" /-->
+    <spring:theme code="styleSheet" var="roo_css" />
+    <spring:url value="/${roo_css}" var="roo_css_url" />
+    <spring:url value="/resources/styles/ui-lightness/jquery-ui-1.8.17.custom.css" var="theme_url" />
+    <spring:url value="/resources/js/jquery-1.7.1.min.js" var="jquery_url" />
+    <spring:url value="/resources/js/jquery.dateFormat-1.0.js" var="jquery_dateformat_url" />
+    <spring:url value="/resources/js/jquery.validate.min.js" var="jquery_validation_url" />
+    <spring:url value="/resources/js/additional-methods.min.js" var="jquery_validation_additional_methods_url" />
+    <spring:url value="/resources/js/jquery-ui-1.8.17.custom.min.js" var="jquery_ui_url" />
+    <spring:url value="/resources/images/favicon.ico" var="favicon" />
+    <link rel="stylesheet" type="text/css" href="${theme_url}" />
+    <link rel="stylesheet" type="text/css" href="${tundra_url}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
+    <link rel="SHORTCUT ICON" href="${favicon}" />
+
+    <script src="${jquery_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <script src="${jquery_validation_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <script src="${jquery_validation_additional_methods_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <script src="${jquery_dateformat_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <script src="${jquery_ui_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+</jsp:root>

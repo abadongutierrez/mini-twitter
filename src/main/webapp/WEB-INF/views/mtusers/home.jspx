@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <h1>User Home</h1>
+    <!--page:list id="pl_com_jabaddon_minitwitter_domain_Tweet" items="${tweets}" z="Xf3KAGrx2Gtqxmamcg8zG+ujJZw=">
+        <table:table data="${tweets}" id="l_com_jabaddon_minitwitter_domain_Tweet" path="/tweets" z="zA0/1ly29R0pWXSZqXhKL57iHrg=">
+            <table:column id="c_com_jabaddon_minitwitter_domain_Tweet_text" property="text" z="uoTCdg6Si2dBvjlQH5QqMhYARnY="/>
+            <table:column date="true" dateTimePattern="${tweet_timestamp_date_format}" id="c_com_jabaddon_minitwitter_domain_Tweet_timestamp" property="timestamp" z="VqpQyqKtmzjnkBg+BxzJt41AKq8="/>
+            <table:column id="c_com_jabaddon_minitwitter_domain_Tweet_author" property="author" z="Mt03aoZhnMoKrMMS9kuxnZHyEJo="/>
+        </table:table>
+    </page:list-->
+</div>
