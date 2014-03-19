@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect Tweet_Roo_Json {
     
     public String Tweet.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String Tweet.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static Tweet Tweet.fromJsonToTweet(String json) {
-        return new JSONDeserializer<Tweet>().use(null, Tweet.class).deserialize(json);
+        return new JSONDeserializer<Tweet>()
+        .use(null, Tweet.class).deserialize(json);
     }
     
     public static String Tweet.toJsonArray(Collection<Tweet> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String Tweet.toJsonArray(Collection<Tweet> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<Tweet> Tweet.fromJsonArrayToTweets(String json) {
-        return new JSONDeserializer<List<Tweet>>().use(null, ArrayList.class).use("values", Tweet.class).deserialize(json);
+        return new JSONDeserializer<List<Tweet>>()
+        .use("values", Tweet.class).deserialize(json);
     }
     
 }

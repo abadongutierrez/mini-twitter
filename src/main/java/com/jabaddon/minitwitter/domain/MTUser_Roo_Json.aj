@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect MTUser_Roo_Json {
     
     public String MTUser.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String MTUser.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static MTUser MTUser.fromJsonToMTUser(String json) {
-        return new JSONDeserializer<MTUser>().use(null, MTUser.class).deserialize(json);
+        return new JSONDeserializer<MTUser>()
+        .use(null, MTUser.class).deserialize(json);
     }
     
     public static String MTUser.toJsonArray(Collection<MTUser> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String MTUser.toJsonArray(Collection<MTUser> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<MTUser> MTUser.fromJsonArrayToMTUsers(String json) {
-        return new JSONDeserializer<List<MTUser>>().use(null, ArrayList.class).use("values", MTUser.class).deserialize(json);
+        return new JSONDeserializer<List<MTUser>>()
+        .use("values", MTUser.class).deserialize(json);
     }
     
 }

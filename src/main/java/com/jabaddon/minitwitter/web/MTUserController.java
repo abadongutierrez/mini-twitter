@@ -80,11 +80,27 @@ public class MTUserController {
         return "mtusers/list";
     }
 
-    @RequestMapping(params = "find=ByUsernameLikeOrNameLikeOrLastNameLike", method = RequestMethod.GET)
+    /*@RequestMapping(params = "find=ByUsernameLikeOrNameLikeOrLastNameLike", method = RequestMethod.GET)
     public String findMTUsersByUsernameLikeOrNameLikeOrLastNameLike(HttpServletRequest request, @RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("lastName") String lastName, Model uiModel) {
         MTUser user = MTUser.findMTUsersByUsernameEquals(request.getUserPrincipal().getName()).getSingleResult();
         uiModel.addAttribute("mtusers", MTUser.findMTUsersByUsernameLikeOrNameLikeOrLastNameLike(
                 username, name, lastName).getResultList());
+        uiModel.addAttribute("user", user);
+        return "mtusers/list";
+    }*/
+
+    @RequestMapping(produces = "text/html")
+    public String list(HttpServletRequest request, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+        if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            uiModel.addAttribute("mtusers", MTUser.findMTUserEntries(firstResult, sizeNo, sortFieldName, sortOrder));
+            float nrOfPages = (float) MTUser.countMTUsers() / sizeNo;
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+        } else {
+            uiModel.addAttribute("mtusers", MTUser.findAllMTUsers(sortFieldName, sortOrder));
+        }
+        MTUser user = MTUser.findMTUsersByUsernameEquals(request.getUserPrincipal().getName()).getSingleResult();
         uiModel.addAttribute("user", user);
         return "mtusers/list";
     }

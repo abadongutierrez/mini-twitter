@@ -14,6 +14,8 @@ privileged aspect MTUser_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager MTUser.entityManager;
     
+    public static final List<String> MTUser.fieldNames4OrderClauseFilter = java.util.Arrays.asList("LOGGER", "username", "password", "passwordConfirmation", "enabled", "name", "lastName", "tweets", "following", "followers");
+    
     public static final EntityManager MTUser.entityManager() {
         EntityManager em = new MTUser().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect MTUser_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM MTUser o", MTUser.class).getResultList();
     }
     
+    public static List<MTUser> MTUser.findAllMTUsers(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM MTUser o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, MTUser.class).getResultList();
+    }
+    
     public static MTUser MTUser.findMTUser(Long id) {
         if (id == null) return null;
         return entityManager().find(MTUser.class, id);
@@ -35,6 +48,17 @@ privileged aspect MTUser_Roo_Jpa_ActiveRecord {
     
     public static List<MTUser> MTUser.findMTUserEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM MTUser o", MTUser.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<MTUser> MTUser.findMTUserEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM MTUser o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, MTUser.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

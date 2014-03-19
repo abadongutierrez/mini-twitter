@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_jabaddon_minitwitter_domain_MTUser" items="${mtusers}">
-        <table:table data="${mtusers}" id="l_com_jabaddon_minitwitter_domain_MTUser" path="/mtusers" user="${user}" z="user">
+        <table:table data="${mtusers}" id="l_com_jabaddon_minitwitter_domain_MTUser" path="/mtusers" user="${user}" z="user-managed">
             <table:column id="c_com_jabaddon_minitwitter_domain_MTUser_username" property="username"/>
             <table:column id="c_com_jabaddon_minitwitter_domain_MTUser_name" property="name"/>
             <table:column id="c_com_jabaddon_minitwitter_domain_MTUser_lastName" property="lastName"/>

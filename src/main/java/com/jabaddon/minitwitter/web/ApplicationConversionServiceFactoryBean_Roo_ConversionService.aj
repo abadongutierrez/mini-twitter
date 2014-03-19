@@ -16,7 +16,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<MTUser, String> ApplicationConversionServiceFactoryBean.getMTUserToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.jabaddon.minitwitter.domain.MTUser, java.lang.String>() {
             public String convert(MTUser mTUser) {
-                return new StringBuilder().append(mTUser.getUsername()).append(" ").append(mTUser.getPassword()).append(" ").append(mTUser.getPasswordConfirmation()).append(" ").append(mTUser.getName()).toString();
+                return new StringBuilder().append(mTUser.getUsername()).append(' ').append(mTUser.getPassword()).append(' ').append(mTUser.getPasswordConfirmation()).append(' ').append(mTUser.getName()).toString();
             }
         };
     }
