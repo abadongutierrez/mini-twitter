@@ -10,9 +10,7 @@
                 <menu:item id="i_mtuser_follower" label="Followers" url="/mtusers?find=Followers"/>
                 <menu:item id="fi_mtuser_usernamelikeornamelikeorlastnamelike" label="Find Users" url="/mtusers?find=ByUsernameLikeOrNameLikeOrLastNameLike&amp;form"/>
                 <menu:item id="i_mtuser_logout" label="Logout" url="/resources/j_spring_security_logout"/>
-                <menu:item id="i_mtuser_new" messageCode="global_menu_new" url="/mtusers?form" z="NAJPDIKyx7MihhmDIBJRX3pc16Y="/>
                 <menu:item id="i_mtuser_list" messageCode="global_menu_list" url="/mtusers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UWgxhBog1yFECsbz6njLfYWX30c="/>
-                <menu:item id="fi_mtuser_usernameequals" messageCode="global_menu_find" url="/mtusers?find=ByUsernameEquals&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="nfHiUVXp+pinbYC+21j9kuFVvX8="/>
             </menu:category>
         </menu:menu>
     </c:if>

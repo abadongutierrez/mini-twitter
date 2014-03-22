@@ -1,5 +1,6 @@
 package com.jabaddon.minitwitter.domain;
 
+import com.jabaddon.minitwitter.domain.model.Tweet;
 import flexjson.JSONDeserializer;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -9,7 +9,7 @@
                              description="The identifier for this tag (do not change!)"/>
     <jsp:directive.attribute name="data" type="java.util.Collection" required="true" rtexprvalue="true"
                              description="The collection to be displayed in the table"/>
-    <jsp:directive.attribute name="user" type="com.jabaddon.minitwitter.domain.MTUser" required="true" rtexprvalue="true"
+    <jsp:directive.attribute name="user" type="com.jabaddon.minitwitter.domain.model.MTUser" required="true" rtexprvalue="true"
                              description=""/>
     <jsp:directive.attribute name="path" type="java.lang.String" required="true" rtexprvalue="true"
                              description="Specify the URL path"/>
